@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "CryptoStart Buddy",
+    "subtitle": "Built with Zara",
+    "description": "CryptoStart Buddy is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://c50c884e530a4b49858f171a95cae46d-imd0.vercel.app",
+    "splashImageUrl": "https://c50c884e530a4b49858f171a95cae46d-imd0.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://c50c884e530a4b49858f171a95cae46d-imd0.vercel.app/image.png",
+    "tagline": "CryptoStart Buddy",
+    "screenshotUrls": [
+      "https://c50c884e530a4b49858f171a95cae46d-imd0.vercel.app/screenshot.png",
+      "https://c50c884e530a4b49858f171a95cae46d-imd0.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://c50c884e530a4b49858f171a95cae46d-imd0.vercel.app/api/webhook"
+  }
+}
