@@ -27,8 +27,7 @@ CryptoStart Buddy is a Base Mini App designed to help everyday people understand
    ```
 
 4. Add your API keys to `.env.local`:
-   - `NEXT_PUBLIC_MINIKIT_API_KEY`: Your MiniKit API key
-   - `NEXT_PUBLIC_ONCHAINKIT_API_KEY`: Your OnchainKit API key  
+   - `NEXT_PUBLIC_ONCHAINKIT_API_KEY`: Your OnchainKit API key
    - `OPENAI_API_KEY`: Your OpenAI API key
 
 5. Run the development server:
