@@ -9,15 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@coinbase/minikit": "^0.1.0",
-    "@coinbase/onchainkit": "^0.30.0",
+    "@coinbase/onchainkit": "^1.0.0",
+    "@tanstack/query-core": "^5.45.0",
+    "@tanstack/react-query": "^5.45.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.294.0",
     "next": "15.0.0",
+    "openai": "^4.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "openai": "^4.20.0",
-    "lucide-react": "^0.294.0",
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "viem": "^2.17.0",
+    "wagmi": "^2.12.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -26,9 +29,10 @@
     "autoprefixer": "^10.4.16",
     "eslint": "^8.54.0",
     "eslint-config-next": "15.0.0",
+    "pino-pretty": "^10.2.3",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5.2.2",
-    "pino-pretty": "^10.2.3"
-  }
+    "typescript": "^5.2.2"
+  },
+  "packageManager": "yarn@4.9.4+sha512.7b1cb0b62abba6a537b3a2ce00811a843bea02bcf53138581a6ae5b1bf563f734872bd47de49ce32a9ca9dcaff995aa789577ffb16811da7c603dcf69e73750b"
 }
