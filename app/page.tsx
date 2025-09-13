@@ -7,6 +7,8 @@ import { CallToAction } from '@/components/CallToAction';
 import { ProgressBar } from '@/components/ProgressBar';
 import { ChatBubble } from '@/components/ChatBubble';
 import { QuestionnaireItem } from '@/components/QuestionnaireItem';
+import { WalletSetup } from '@/components/WalletSetup';
+import { Quiz, SAMPLE_SCAM_QUIZ_QUESTIONS } from '@/components/Quiz';
 import { EDUCATIONAL_MODULES, SCAM_EXAMPLES, RISK_ASSESSMENT_QUESTIONS, PRICING } from '@/lib/constants';
 import { formatCurrency, calculateRiskScore, getRiskLevel, generateRecommendations } from '@/lib/utils';
 import { 
@@ -22,7 +24,7 @@ import {
   Send
 } from 'lucide-react';
 
-type ViewState = 'home' | 'learn' | 'wallet' | 'scams' | 'risk' | 'chat' | 'scam-detail';
+type ViewState = 'home' | 'learn' | 'wallet' | 'scams' | 'risk' | 'chat' | 'scam-detail' | 'quiz';
 
 interface ChatMessage {
   id: string;
@@ -237,7 +239,7 @@ export default function HomePage() {
   );
 
   const renderWalletView = () => (
-    <div className="py-8 space-y-6">
+    <div className="py-8">
       <div className="flex items-center gap-3 mb-6">
         <button
           onClick={() => setCurrentView('home')}
@@ -248,51 +250,7 @@ export default function HomePage() {
         <h1 className="text-2xl font-semibold text-text">Wallet Setup</h1>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-        <div className="flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
-          <div>
-            <h3 className="font-medium text-yellow-800 mb-1">Premium Content</h3>
-            <p className="text-yellow-700 text-sm">
-              This step-by-step wallet setup guide is available with premium access.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div className="bg-surface rounded-lg p-6 shadow-card">
-          <h3 className="text-lg font-semibold text-text mb-3">
-            What You'll Learn:
-          </h3>
-          <ul className="space-y-2 text-text/70">
-            <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-accent" />
-              How to choose a secure wallet
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-accent" />
-              Setting up MetaMask for Base network
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-accent" />
-              Securing your private keys
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-accent" />
-              Making your first transaction
-            </li>
-          </ul>
-        </div>
-
-        <CallToAction 
-          variant="primary" 
-          size="lg"
-          className="w-full"
-        >
-          Get Wallet Setup Guide - {formatCurrency(PRICING.WALLET_SETUP_GUIDE)}
-        </CallToAction>
-      </div>
+      <WalletSetup />
     </div>
   );
 
@@ -334,6 +292,24 @@ export default function HomePage() {
             }}
           />
         ))}
+      </div>
+
+      {/* Interactive Quiz Section */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-blue-800 mb-2">
+          🧠 Test Your Knowledge
+        </h3>
+        <p className="text-blue-700 mb-4">
+          Take our interactive scam identification quiz to test what you've learned
+        </p>
+        <CallToAction
+          variant="secondary"
+          onClick={() => {
+            setCurrentView('quiz');
+          }}
+        >
+          Start Quiz
+        </CallToAction>
       </div>
 
       <div className="bg-accent/10 rounded-lg p-6">
@@ -549,6 +525,30 @@ export default function HomePage() {
     </div>
   );
 
+  const renderQuizView = () => (
+    <div className="py-8">
+      <div className="flex items-center gap-3 mb-6">
+        <button
+          onClick={() => setCurrentView('scams')}
+          className="p-2 hover:bg-border rounded-lg transition-smooth"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+        <h1 className="text-2xl font-semibold text-text">Scam Identification Quiz</h1>
+      </div>
+
+      <Quiz
+        questions={SAMPLE_SCAM_QUIZ_QUESTIONS}
+        title="Test Your Scam Detection Skills"
+        description="Answer these questions to see how well you can identify common crypto scams"
+        onComplete={(score, total) => {
+          // Update progress when quiz is completed
+          setProgress(prev => Math.min(100, prev + 5));
+        }}
+      />
+    </div>
+  );
+
   return (
     <AppShell>
       {currentView === 'home' && renderHomeView()}
@@ -556,6 +556,7 @@ export default function HomePage() {
       {currentView === 'wallet' && renderWalletView()}
       {currentView === 'scams' && renderScamsView()}
       {currentView === 'scam-detail' && renderScamDetailView()}
+      {currentView === 'quiz' && renderQuizView()}
       {currentView === 'risk' && renderRiskView()}
       {currentView === 'chat' && renderChatView()}
     </AppShell>
