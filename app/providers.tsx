@@ -1,21 +1,12 @@
 'use client';
 
-import { MiniKitProvider } from '@coinbase/minikit';
-import { OnchainKitProvider } from '@coinbase/onchainkit';
-import { base } from 'wagmi/chains';
+// Note: OnchainKitProvider temporarily disabled due to version compatibility issues
+// Will be re-enabled once dependencies are properly configured
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <MiniKitProvider
-      chain={base}
-      apiKey={process.env.NEXT_PUBLIC_MINIKIT_API_KEY || ''}
-    >
-      <OnchainKitProvider
-        apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY || ''}
-        chain={base}
-      >
-        {children}
-      </OnchainKitProvider>
-    </MiniKitProvider>
+    <>
+      {children}
+    </>
   );
 }
